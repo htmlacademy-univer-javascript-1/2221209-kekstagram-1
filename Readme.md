@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Глеб Оглоблин](https://up.htmlacademy.ru/univer-js1/1/user/2221209).
-* Наставник: `Неизвестно`.
+* Наставник: [Дмитрий Рябинин](https://htmlacademy.ru/profile/haschish).
 
 ---
 
