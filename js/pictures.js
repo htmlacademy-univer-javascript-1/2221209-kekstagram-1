@@ -10,7 +10,7 @@ function renderPicture({ url, likes, comments, description }) {
   pictureElement.querySelector('img').src = url;
   pictureElement.querySelector('.picture__likes').textContent = likes;
   pictureElement.querySelector('.picture__comments').textContent = comments.length;
-  
+
   pictureElement.addEventListener('click', (evt) => {
     evt.preventDefault();
     renderBigPicture({ url, likes, comments, description });

@@ -8,7 +8,7 @@ function addClosingOption() {
     closeOption();
     document.removeEventListener('keydown', escButtonClosing);});
   document.addEventListener('keydown', escButtonClosing);
-};
+}
 
 function closeOption() {
   bigPicture.classList.add('hidden');
@@ -17,14 +17,14 @@ function closeOption() {
   body.classList.remove('modal-open');
 
   bigPicture.querySelector('.social__comments').replaceChildren();
-};
+}
   
 function escButtonClosing(keyEvent) {
   if (keyEvent.keyCode === 27) {
     closeOption();
     document.removeEventListener('keydown', escButtonClosing);
   }
-};
+}
 
 function renderBigPicture({url, likes, comments, description}) {
   document.querySelector('.big-picture__img').querySelector('img').src = url;
@@ -38,13 +38,13 @@ function renderBigPicture({url, likes, comments, description}) {
   commentsLoader.classList.add('hidden');
   body.classList.add('modal-open');
   addClosingOption();
-};
+}
 
 function renderComments(comments) {
   comments.forEach((comment) => {
     renderComment(comment);
   });
-};
+}
 
 function renderComment({avatar, message, name}) {
   const container = document.createDocumentFragment();
@@ -66,6 +66,6 @@ function renderComment({avatar, message, name}) {
   container.querySelector('li').append(commentText);
 
   bigPicture.querySelector('.social__comments').append(container);
-};
+}
 
 export {renderBigPicture};
