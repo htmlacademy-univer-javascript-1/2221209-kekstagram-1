@@ -15,7 +15,7 @@ function renderPicture({ url, likes, comments, description }) {
   pictureElement.addEventListener('click', (evt) => {
     evt.preventDefault();
     renderBigPicture({ url, likes, comments, description });
-  })
+  });
 
   return pictureElement;
 }
