@@ -1,10 +1,10 @@
-import {createPhotoObjects} from './data.js';
+import { createPhotoObjects } from './data.js';
 
 const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
 const pictures = document.querySelector('.pictures');
 const picturesFragment = document.createDocumentFragment();
 
-function renderPicture({url, likes, comments}){
+function renderPicture({ url, likes, comments }) {
     const pictureElement = pictureTemplate.cloneNode(true);
     pictureElement.querySelector('img').src = url;
     pictureElement.querySelector('.picture__likes').textContent = likes;
