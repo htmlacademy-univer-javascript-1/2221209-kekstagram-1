@@ -18,7 +18,7 @@ function closeOption() {
 
   bigPicture.querySelector('.social__comments').replaceChildren();
 }
-  
+
 function escButtonClosing(keyEvent) {
   if (keyEvent.keyCode === 27) {
     closeOption();
