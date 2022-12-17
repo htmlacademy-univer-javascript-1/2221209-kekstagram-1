@@ -29,9 +29,9 @@ const Description = [
 
 const photosCount = 25;
 
-function createPhotoObjects(count){
+function createPhotoObjects(){
   const photos = [];
-  for (let i = 0; i < count; i++){
+  for (let i = 0; i < photosCount; i++){
     photos[i] = createPhotoObject(i);
   }
   return photos;
@@ -40,7 +40,7 @@ function createPhotoObjects(count){
 function createPhotoObject(id){
   return {
     id: id,
-    url: `photos/${id}.jpg`,
+    url: `photos/${id + 1}.jpg`,
     description: Description[getRandomNumber(0, Description.length - 1)],
     likes: getRandomNumber(15, 200),
     comments: createComments(id)
@@ -64,5 +64,4 @@ function createComments(id){
   return comments;
 }
 
-// eslint-disable-next-line no-console
-console.log(createPhotoObjects(photosCount));
+export {createPhotoObjects};
