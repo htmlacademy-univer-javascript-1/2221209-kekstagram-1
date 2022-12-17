@@ -5,7 +5,6 @@ const pictureTemplate = document.querySelector('#picture').content.querySelector
 const pictures = document.querySelector('.pictures');
 const picturesFragment = document.createDocumentFragment();
 
-
 function renderPicture({ url, likes, comments, description }) {
   const pictureElement = pictureTemplate.cloneNode(true);
   pictureElement.querySelector('img').src = url;
