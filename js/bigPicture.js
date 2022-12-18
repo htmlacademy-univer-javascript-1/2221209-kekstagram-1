@@ -12,6 +12,13 @@ const commentsLoader = bigPicture.querySelector('.comments-loader');
 let actualComments = [];
 let countRenderedComments = shownCommentsCount;
 
+const getCommentTemplate = ({avatar, message, name}) => `<li class="social__comment">
+  <img class="social__picture" src="${avatar}" alt="${name}" width="35" height="35">
+  <p class="social__text">${message}</p>
+  </li>`;
+
+const getCounterCommentsTemplate = (commentsCount) => `${Math.min(countRenderedComments, commentsCount)} из <span class="comments-count">${commentsCount}</span> комментариев`;
+
 function openBigPicture(element) {
   body.classList.add('modal-open');
   bigPicture.classList.remove('hidden');
@@ -56,13 +63,6 @@ function renderComments() {
     commentsLoader.classList.add('hidden');
   }
 }
-
-const getCommentTemplate = ({avatar, message, name}) => `<li class="social__comment">
-  <img class="social__picture" src="${avatar}" alt="${name}" width="35" height="35">
-  <p class="social__text">${message}</p>
-  </li>`;
-
-const getCounterCommentsTemplate = (commentsCount) => `${Math.min(countRenderedComments, commentsCount)} из <span class="comments-count">${commentsCount}</span> комментариев`;
 
 function getCounterComments() {
   commentsCount.innerHTML='';
