@@ -25,27 +25,26 @@ function loadEffects() {
       from: (value) => parseFloat(value),
     },
   });
-};
+}
 
 function onFilterButtonChange(evt) {
   const evtHandler = evt.target.value;
   if (evtHandler === 'none') {
     sliderContainer.classList.add('hidden');
-    console.log('hj')
     imgPreview.style.filter = 'none';
   }
 
   else {
     sliderContainer.classList.remove('hidden');
-    imgPreview.removeAttribute('style')
+    imgPreview.removeAttribute('style');
     imgPreview.removeAttribute('class');
     imgPreview.classList.add(`effects__preview--${evtHandler}`);
     slider.noUiSlider.updateOptions(Effects[evtHandler].options);
     slider.noUiSlider.on('update', () => {
       effectValue.value = slider.noUiSlider.get();
-      imgPreview.setAttribute('style', `filter: ${Effects[evtHandler].filter}(${effectValue.value}${Effects[evtHandler].unit})`)
+      imgPreview.setAttribute('style', `filter: ${Effects[evtHandler].filter}(${effectValue.value}${Effects[evtHandler].unit})`);
     });
   }
-};
+}
 
 export { onFilterButtonChange, loadEffects, effectList, sliderContainer };

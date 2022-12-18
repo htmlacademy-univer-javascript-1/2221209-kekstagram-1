@@ -33,6 +33,6 @@ function onScaleClick(evt) {
     scaleValue.value = `${counter}%`;
   }
   imgPreview.style.transform = `scale(${counter / 10 / 10})`;
-};
+}
 
 export {onScaleClick, scaleContainer};

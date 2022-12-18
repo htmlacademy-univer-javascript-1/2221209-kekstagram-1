@@ -50,7 +50,7 @@ const onCommentInput = () => helper();
 
 function imgUploaderFormOpen() {
   uploader.classList.remove('hidden');
-  uploader.querySelector('.scale__control--value').value = '100%'
+  uploader.querySelector('.scale__control--value').value = '100%';
   body.classList.add('modal-open');
   sliderContainer.classList.add('hidden');
   scaleContainer.addEventListener('click', onScaleClick);
