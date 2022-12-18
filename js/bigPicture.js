@@ -17,7 +17,7 @@ const getCommentTemplate = ({avatar, message, name}) => `<li class="social__comm
   <p class="social__text">${message}</p>
   </li>`;
 
-const getCounterCommentsTemplate = (shownCommentsCount) => `${Math.min(countRenderedComments, shownCommentsCount)} из <span class="comments-count">${shownCommentsCount}</span> комментариев`;
+const getCounterCommentsTemplate = (allCommentsCount) => `${Math.min(countRenderedComments, allCommentsCount)} из <span class="comments-count">${allCommentsCount}</span> комментариев`;
 
 function openBigPicture(element) {
   body.classList.add('modal-open');
