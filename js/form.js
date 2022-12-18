@@ -14,14 +14,14 @@ function closeUploadPopup() {
   uploader.classList.add('hidden');
   body.classList.remove('modal-open');
   formUpload.reset();
-};
+}
 
 function possibleEscButtonAction(evt) {
   if (isEscapeKey(evt)) {
     closeUploadPopup();
     document.removeEventListener('keydown', possibleEscButtonAction);
   }
-};
+}
 
 function addListenerForField(field) {
   field.addEventListener('focus', () => {
@@ -30,12 +30,12 @@ function addListenerForField(field) {
   field.addEventListener('blue', () => {
     document.addEventListener('keydown', possibleEscButtonAction);
   });
-};
+}
 
 function clickClose() {
   closeUploadPopup();
   document.removeEventListener('keydown', possibleEscButtonAction);
-};
+}
 
 const onHashtagInput = () => helper();
 const onCommentInput = () => helper();
@@ -48,13 +48,13 @@ function imgUploaderFormOpen() {
   addListenerForField(hashtagField);
   addListenerForField(commentField);
   helper();
-};
+}
 
 function renderUploadForm() {
   uploadField.addEventListener('change', imgUploaderFormOpen);
   hashtagField.addEventListener('input', onHashtagInput);
   commentField.addEventListener('input', onCommentInput);
   validation();
-};
+}
 
 export {renderUploadForm};

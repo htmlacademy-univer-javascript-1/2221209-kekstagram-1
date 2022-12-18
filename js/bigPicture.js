@@ -1,4 +1,4 @@
-import { isEscapeKey } from "./util.js";
+import { isEscapeKey } from './util.js';
 
 const bigPicture = document.querySelector('.big-picture');
 const commentCount = document.querySelector('.social__comment-count');

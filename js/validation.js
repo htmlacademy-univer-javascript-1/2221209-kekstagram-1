@@ -62,7 +62,7 @@ function hashtagsHandler(value) {
     }
     return !isInvalid;
   });
-};
+}
 
 function onHashtagInput() {
   if (pristine.validate()) {
@@ -70,7 +70,7 @@ function onHashtagInput() {
   } else {
     document.querySelector('.img-upload__submit').classList.add('disabled');
   }
-};
+}
 
 function commentHandler(value) {
   errorMessage = '';
@@ -89,11 +89,11 @@ function commentHandler(value) {
     errorMessage = rule.error;
   }
   return isValid;
-};
+}
 
 function helper() {
   document.querySelector('.img-upload__submit').disabled = !pristine.validate();
-};
+}
 
 function validation() {
   pristine.addValidator(inputComment, commentHandler, error);
@@ -107,6 +107,6 @@ pristine.addValidator(inputHashtag, hashtagsHandler, error);
 formUpload.addEventListener('submit', (evt) => {
   evt.preventDefault();
   pristine.validate();
-});
+})
 
 export {validation, helper};
