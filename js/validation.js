@@ -107,6 +107,6 @@ pristine.addValidator(inputHashtag, hashtagsHandler, error);
 formUpload.addEventListener('submit', (evt) => {
   evt.preventDefault();
   pristine.validate();
-})
+});
 
 export {validation, helper};
