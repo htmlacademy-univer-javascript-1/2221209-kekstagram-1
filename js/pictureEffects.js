@@ -6,7 +6,7 @@ const sliderContainer = document.querySelector('.effect-level');
 const effectValue = document.querySelector('.effect-level__value');
 const effectList = document.querySelector('.effects__list');
 
-const loadEffects = () => {
+function loadEffects() {
   noUiSlider.create(slider, {
     range: {
       min: 0,
@@ -27,7 +27,7 @@ const loadEffects = () => {
   });
 };
 
-const onFilterButtonChange = (evt) => {
+function onFilterButtonChange(evt) {
   const evtHandler = evt.target.value;
   if (evtHandler === 'none') {
     sliderContainer.classList.add('hidden');

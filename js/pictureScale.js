@@ -4,7 +4,7 @@ import {Scale} from './data.js';
 const scaleContainer = document.querySelector('.img-upload__scale');
 const scaleValue = document.querySelector('.scale__control--value');
 
-const onScaleClick = (evt) => {
+function onScaleClick(evt) {
   const input = Number.parseInt(scaleValue.value, 10);
   let counter = Scale.max;
   const button = evt.target;
