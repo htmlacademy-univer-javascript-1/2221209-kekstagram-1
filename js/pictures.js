@@ -1,5 +1,6 @@
 import { createPhotoObjects } from './data.js';
 import {renderBigPicture} from './bigPicture.js';
+import {renderUploadForm} from './form.js';
 
 const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
 const pictures = document.querySelector('.pictures');
@@ -26,3 +27,4 @@ generatedPictures.forEach((picture) => {
 });
 
 pictures.appendChild(picturesFragment);
+renderUploadForm();

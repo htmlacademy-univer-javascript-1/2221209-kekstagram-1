@@ -10,4 +10,8 @@ function checkStringLength(string, maxLength){
   return string.length <= maxLength;
 }
 
-export {getRandomNumber, checkStringLength};
+function isEscapeKey(evt) {
+  return evt.key === 'Escape';
+}
+
+export {getRandomNumber, checkStringLength, isEscapeKey};
