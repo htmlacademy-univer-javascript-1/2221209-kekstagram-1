@@ -1,5 +1,5 @@
 import { createPhotoObjects } from './data.js';
-import {renderBigPicture} from './bigPicture.js';
+import {openBigPicture} from './bigPicture.js';
 import {renderUploadForm} from './form.js';
 
 const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
@@ -14,7 +14,7 @@ function renderPicture({ url, likes, comments, description }) {
 
   pictureElement.addEventListener('click', (evt) => {
     evt.preventDefault();
-    renderBigPicture({ url, likes, comments, description });
+    openBigPicture({ url, likes, comments, description });
   });
 
   return pictureElement;
