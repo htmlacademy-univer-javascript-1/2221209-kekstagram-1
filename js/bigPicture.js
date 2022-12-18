@@ -1,3 +1,5 @@
+import { isEscapeKey } from "./util.js";
+
 const bigPicture = document.querySelector('.big-picture');
 const commentCount = document.querySelector('.social__comment-count');
 const commentsLoader = document.querySelector('.comments-loader');
@@ -19,8 +21,8 @@ function closeOption() {
   bigPicture.querySelector('.social__comments').replaceChildren();
 }
 
-function escButtonClosing(keyEvent) {
-  if (keyEvent.keyCode === 27) {
+function escButtonClosing(evt) {
+  if (isEscapeKey(evt)) {
     closeOption();
     document.removeEventListener('keydown', escButtonClosing);
   }
