@@ -32,7 +32,7 @@ function changeFilter(name, data) {
     case 'filter-discussed':
       renderPictures(data.slice().sort((photo1, photo2) => photo2.comments.length - photo1.comments.length));
       break;
-    } 
+  }
 }
 
 export {activateFilters};

@@ -90,5 +90,5 @@ function throttle (callback, delayBetweenFrames) {
   };
 }
 
-export {getRandomNumber, checkStringLength, getRandomArrayElements, 
+export {getRandomNumber, checkStringLength, getRandomArrayElements,
   isEscapeKey, showAlertMessage, throttle, debounce};
