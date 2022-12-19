@@ -11,7 +11,7 @@ function getData(onSuccess, showAlertMessage) {
     })
     .catch(() => showAlertMessage(true, true));
 }
-  
+
 function sendData(onSuccess, showAlertMessage, body, onFinal) {
   fetch(
     'https://26.javascript.pages.academy/kekstagram',
@@ -20,12 +20,12 @@ function sendData(onSuccess, showAlertMessage, body, onFinal) {
       body,
     },
   )
-  .then((response) => {
-   if (response.ok) {
-    onSuccess();
-  } else {
-      throw new Error(`${response.status} ${response.statusText}`);
-  }
+    .then((response) => {
+      if (response.ok) {
+        onSuccess();
+      } else {
+        throw new Error(`${response.status} ${response.statusText}`);
+      }
     })
     .catch(() => {
       showAlertMessage(true, false);
