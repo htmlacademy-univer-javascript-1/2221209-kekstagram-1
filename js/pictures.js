@@ -1,4 +1,3 @@
-import { createPhotoObjects } from './data.js';
 import {openBigPicture} from './bigPicture.js';
 import {renderUploadForm} from './form.js';
 import {loadEffects} from './pictureEffects.js';
@@ -21,12 +20,14 @@ function renderPicture({ url, likes, comments, description }) {
   return pictureElement;
 }
 
-const generatedPictures = createPhotoObjects();
-generatedPictures.forEach((picture) => {
-  const renderedPicture = renderPicture(picture);
-  picturesFragment.appendChild(renderedPicture);
-});
+function renderPictures(uploadedPictures){
+  uploadedPictures.forEach((picture) => {
+    const renderedPicture = renderPicture(picture);
+    picturesFragment.appendChild(renderedPicture);
+    pictures.appendChild(picturesFragment);
+  });
+  renderUploadForm();
+  loadEffects();
+}
 
-pictures.appendChild(picturesFragment);
-renderUploadForm();
-loadEffects();
+export {renderPictures};

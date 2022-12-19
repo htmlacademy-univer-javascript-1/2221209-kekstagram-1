@@ -1,6 +1,6 @@
 import {isEscapeKey} from './util.js';
 
-const shownCommentsCount = 5;
+const SHOWN_COMMENTS_COUNT = 5;
 
 const body = document.querySelector('body');
 const bigPicture = document.querySelector('.big-picture');
@@ -10,7 +10,7 @@ const commentsCount = document.querySelector('.social__comment-count');
 const commentsLoader = bigPicture.querySelector('.comments-loader');
 
 let actualComments = [];
-let countRenderedComments = shownCommentsCount;
+let countRenderedComments = SHOWN_COMMENTS_COUNT;
 
 const getCommentTemplate = ({avatar, message, name}) => `<li class="social__comment">
   <img class="social__picture" src="${avatar}" alt="${name}" width="35" height="35">
@@ -76,7 +76,7 @@ function pictureClose() {
   document.removeEventListener('keydown', onDocumentEscKeyDown);
   commentsLoader.classList.remove('hidden');
   commentsLoader.removeEventListener('click', onCommentsLoaderButtonClick);
-  countRenderedComments = shownCommentsCount;
+  countRenderedComments = SHOWN_COMMENTS_COUNT;
 }
 
 function onDocumentEscKeyDown(evt) {
@@ -90,7 +90,7 @@ function onCloseButtonClick() {
 }
 
 function onCommentsLoaderButtonClick() {
-  countRenderedComments += shownCommentsCount;
+  countRenderedComments += SHOWN_COMMENTS_COUNT;
   renderComments();
 }
 
