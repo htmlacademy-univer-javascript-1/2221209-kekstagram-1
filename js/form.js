@@ -69,4 +69,4 @@ function renderUploadForm() {
   validation();
 }
 
-export {renderUploadForm, imgPreview};
+export {renderUploadForm, imgPreview, closeUploadPopup};

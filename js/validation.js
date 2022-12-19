@@ -1,12 +1,14 @@
-import {checkStringLength} from './util.js';
+import {sendData} from './api.js';
+import {checkStringLength, showAlertMessage} from './util.js';
 
-const maxSymbols = 20;
-const maxHashtags = 5;
-const maxCommentLength = 140;
+const MAX_SYMBOLS = 20;
+const MAX_HASHTAGS = 5;
+const MAX_COMMENT_LENGTH = 140;
 
 const formUpload = document.querySelector('.img-upload__form');
 const inputHashtag = document.querySelector('.text__hashtags');
 const inputComment = document.querySelector('.text__description');
+const submitButton = document.querySelector('.img-upload__submit');
 let errorMessage = '';
 
 const error = () => errorMessage;
@@ -38,16 +40,16 @@ function hashtagsHandler(value) {
       error: 'Хэш-теги разделяются пробелами'
     },
     {
-      check: inputArray.some((item) => item.length > maxSymbols),
-      error: `Максимальная длина одного хэш-тега ${maxSymbols} символ, включая решётку`
+      check: inputArray.some((item) => item.length > MAX_SYMBOLS),
+      error: `Максимальная длина одного хэш-тега ${MAX_SYMBOLS} символ, включая решётку`
     },
     {
       check: inputArray.some((item, num, arr) => arr.includes(item, num + 1)),
       error: 'Хэш-теги не должны повторяться'
     },
     {
-      check: inputArray.length > maxHashtags,
-      error: `Нельзя указать больше ${maxHashtags} хэш-тегов`
+      check: inputArray.length > MAX_HASHTAGS,
+      error: `Нельзя указать больше ${MAX_HASHTAGS} хэш-тегов`
     },
     {
       check: inputArray.some((item) => !/^#[a-zа-яё0-9]{1,19}$/i.test(item)),
@@ -80,7 +82,7 @@ function commentHandler(value) {
   }
 
   const rule = {
-    check: checkStringLength(text, maxCommentLength),
+    check: checkStringLength(text, MAX_COMMENT_LENGTH),
     error: 'Слишком длинный комментарий'
   };
 
@@ -100,13 +102,29 @@ function validation() {
   helper();
 }
 
+function blockSubmitButton() {
+  submitButton.disabled = 'true';
+};
+
+function unblockSubmitButton() {
+  submitButton.disabled = 'false';
+};
+
 inputHashtag.addEventListener('input', onHashtagInput);
 pristine.addValidator(inputHashtag, hashtagsHandler, error);
 
-
 formUpload.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  pristine.validate();
+  if (pristine.validate()) {
+    sendData(() => {
+      blockSubmitButton();
+      setTimeout(showAlertMessage, 2000);
+    },
+    () => {
+      showAlertMessage(true, false);
+    },
+    new FormData(evt.target), unblockSubmitButton);
+  }
 });
 
 export {validation, helper};
