@@ -3,6 +3,7 @@ import {validation, helper} from './validation.js';
 import {onFilterButtonChange, effectList, sliderContainer} from './picture-effects.js';
 import {onScaleClick, scaleContainer} from './picture-scale.js';
 
+const FILE_TYPES = ['gif', 'jpg', 'jpeg', 'png'];
 const body = document.querySelector('body');
 const uploader = document.querySelector('.img-upload__overlay');
 const closeButtonUploader = document.querySelector('.img-upload__cancel');
@@ -49,7 +50,13 @@ const onHashtagInput = () => helper();
 const onCommentInput = () => helper();
 
 function imgUploaderFormOpen(evt) {
-  imgPreview.src = URL.createObjectURL(evt.target.files[0]);
+  const img = uploadField.files[0];
+  const imgName = img.name.toLowerCase();
+  const matches = FILE_TYPES.some((it) => imgName.endsWith(it));
+
+  if (matches) {
+    imgPreview.src = URL.createObjectURL(evt.target.files[0]);
+  }
   uploader.classList.remove('hidden');
   uploader.querySelector('.scale__control--value').value = '100%';
   body.classList.add('modal-open');

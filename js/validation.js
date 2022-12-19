@@ -114,10 +114,10 @@ inputHashtag.addEventListener('input', onHashtagInput);
 pristine.addValidator(inputHashtag, hashtagsHandler, error);
 
 formUpload.addEventListener('submit', (evt) => {
+  blockSubmitButton();
   evt.preventDefault();
   if (pristine.validate()) {
     sendData(() => {
-      blockSubmitButton();
       setTimeout(showAlertMessage, 2000);
     },
     () => {
