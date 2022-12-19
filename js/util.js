@@ -1,4 +1,4 @@
-import { closeUploadPopup } from "./form.js";
+import { closeUploadPopup } from './form.js';
 
 function getRandomNumber(min, max){
   if (min < 0 || min >= max){
@@ -20,39 +20,39 @@ function showAlertMessage(isError, isGet) {
   const templateName = isError ? 'error' : 'success';
   const template = document.querySelector(`#${templateName}`).content.querySelector('section');
   const popup = template.cloneNode(true);
-
-  function closeAlertMessage() {
-    if (!isError) {
-      closeUploadPopup();
-      popup.remove();
-    };
-    popup.remove();
-    document.querySelector('.img-upload__submit').removeAttribute('disabled');
-    document.removeEventListener('keydown', onButtonClose);
-    button.removeEventListener('click', onClickClose);
-    document.removeEventListener('click', onClickClose);
-  }
-  
-  function onClickClose(){
-    closeAlertMessage();
-  }
-  
-  function onButtonClose(evt){
-    if(isEscapeKey(evt)) {
-      closeAlertMessage();
-    };
-  }
-
-  if (isGet && isError){
-    popup.querySelector('.error__title').textContent = 'Ошибка загрузки файлов';
-    popup.querySelector('.error__button').textContent = 'Извините за неудобство';
-  }
   popup.style.zIndex = 100;
   document.body.append(popup);
   const button = popup.querySelector('button');
   button.addEventListener('click', onClickClose);
   document.addEventListener('click', onClickClose);
   document.addEventListener('keydown', onButtonClose);
-};
+
+  function closeAlertMessage() {
+    if (!isError) {
+      closeUploadPopup();
+      popup.remove();
+    }
+    popup.remove();
+    document.querySelector('.img-upload__submit').removeAttribute('disabled');
+    document.removeEventListener('keydown', onButtonClose);
+    button.removeEventListener('click', onClickClose);
+    document.removeEventListener('click', onClickClose);
+  }
+
+  function onClickClose(){
+    closeAlertMessage();
+  }
+
+  function onButtonClose(evt){
+    if(isEscapeKey(evt)) {
+      closeAlertMessage();
+    }
+  }
+
+  if (isGet && isError){
+    popup.querySelector('.error__title').textContent = 'Ошибка загрузки файлов';
+    popup.querySelector('.error__button').textContent = 'Извините за неудобство';
+  }
+}
 
 export {getRandomNumber, checkStringLength, isEscapeKey, showAlertMessage};

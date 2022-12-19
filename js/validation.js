@@ -104,11 +104,11 @@ function validation() {
 
 function blockSubmitButton() {
   submitButton.disabled = 'true';
-};
+}
 
 function unblockSubmitButton() {
   submitButton.disabled = 'false';
-};
+}
 
 inputHashtag.addEventListener('input', onHashtagInput);
 pristine.addValidator(inputHashtag, hashtagsHandler, error);
