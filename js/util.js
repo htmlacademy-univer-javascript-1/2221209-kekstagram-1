@@ -20,7 +20,7 @@ function showAlertMessage(isError, isGet) {
   const templateName = isError ? 'error' : 'success';
   const template = document.querySelector(`#${templateName}`).content.querySelector('section');
   const popup = template.cloneNode(true);
-  popup.style.zIndex = 100;
+  popup.style.zIndex = 3;
   document.body.append(popup);
   const button = popup.querySelector('button');
   button.addEventListener('click', onClickClose);
@@ -55,4 +55,40 @@ function showAlertMessage(isError, isGet) {
   }
 }
 
-export {getRandomNumber, checkStringLength, isEscapeKey, showAlertMessage};
+function getRandomArrayElements(array, quantity) {
+  const copyArray = array.slice();
+  const newArray = [];
+  for (let i = 0; i < quantity; i++) {
+    const randomIndex = getRandomNumber(0, copyArray.length - 1);
+    newArray.push(copyArray[randomIndex]);
+    copyArray.splice(randomIndex, 1);
+  }
+  return newArray;
+}
+
+function debounce (callback, timeoutDelay = 500) {
+  let timeoutId;
+
+  return (...rest) => {
+    clearTimeout(timeoutId);
+
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+
+  };
+}
+
+function throttle (callback, delayBetweenFrames) {
+  let lastTime = 0;
+
+  return (...rest) => {
+    const now = new Date();
+
+    if (now - lastTime >= delayBetweenFrames) {
+      callback.apply(this, rest);
+      lastTime = now;
+    }
+  };
+}
+
+export {getRandomNumber, checkStringLength, getRandomArrayElements, 
+  isEscapeKey, showAlertMessage, throttle, debounce};

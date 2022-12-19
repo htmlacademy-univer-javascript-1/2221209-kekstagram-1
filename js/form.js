@@ -1,7 +1,7 @@
 import {isEscapeKey} from './util.js';
 import {validation, helper} from './validation.js';
-import {onFilterButtonChange, effectList, sliderContainer} from './pictureEffects.js';
-import {onScaleClick, scaleContainer} from './pictureScale.js';
+import {onFilterButtonChange, effectList, sliderContainer} from './picture-effects.js';
+import {onScaleClick, scaleContainer} from './picture-scale.js';
 
 const body = document.querySelector('body');
 const uploader = document.querySelector('.img-upload__overlay');
@@ -48,7 +48,8 @@ function clickClose() {
 const onHashtagInput = () => helper();
 const onCommentInput = () => helper();
 
-function imgUploaderFormOpen() {
+function imgUploaderFormOpen(evt) {
+  imgPreview.src = URL.createObjectURL(evt.target.files[0]);
   uploader.classList.remove('hidden');
   uploader.querySelector('.scale__control--value').value = '100%';
   body.classList.add('modal-open');

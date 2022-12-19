@@ -1,5 +1,5 @@
 import {imgPreview} from './form.js';
-import { scaleValue } from './pictureScale.js';
+import { scaleValue } from './picture-scale.js';
 
 const slider = document.querySelector('.effect-level__slider');
 const sliderContainer = document.querySelector('.effect-level');

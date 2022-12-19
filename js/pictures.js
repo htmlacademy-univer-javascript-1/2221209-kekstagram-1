@@ -1,6 +1,6 @@
-import {openBigPicture} from './bigPicture.js';
+import {openBigPicture} from './big-picture.js';
 import {renderUploadForm} from './form.js';
-import {loadEffects} from './pictureEffects.js';
+
 
 const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
 const pictures = document.querySelector('.pictures');
@@ -27,7 +27,8 @@ function renderPictures(uploadedPictures){
     pictures.appendChild(picturesFragment);
   });
   renderUploadForm();
-  loadEffects();
 }
 
-export {renderPictures};
+const deletePictures = () => pictures.querySelectorAll('.picture').forEach((pic) => pic.remove());
+
+export {renderPictures, deletePictures};
